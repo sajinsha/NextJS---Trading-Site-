@@ -1,0 +1,106 @@
+/* Base container for animations, positioned absolutely */
+.sustainable-growth-container {
+  position: absolute;
+  bottom: 40%; /* Initial vertical position */
+  left: 33.33%; /* Initial horizontal position */
+  animation: semiCircleRight 10s linear infinite;
+}
+
+.comprehensive-support-container {
+  position: absolute;
+  top: 45%; /* Initial vertical position */
+  right: 8%; /* Initial horizontal position */
+  animation: semiCircleLeft 10s linear infinite;
+}
+
+/* Cursor icons */
+.cursor-icon {
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Sustainable Growth cursor positioning - top left */
+.sg-cursor {
+  top: -20px;
+  left: 0;
+  transform: none;
+}
+
+/* Comprehensive Support cursor positioning - alternating */
+.cs-cursor {
+  animation: alternateCursorPosition 8s steps(1, end) infinite;
+}
+
+/* RESPONSIVE Animation for the RIGHT side of the screen */
+@keyframes semiCircleRight {
+  0% {
+    transform: translate(5vw, -20vh);
+  }
+  25% {
+    transform: translate(15vw, 0vh);
+  }
+  50% {
+    transform: translate(5vw, 20vh);
+  }
+  75% {
+    transform: translate(2vw, 0vh);
+  }
+  100% {
+    transform: translate(5vw, -20vh);
+  }
+}
+
+/* RESPONSIVE Animation for the LEFT side of the screen */
+@keyframes semiCircleLeft {
+  0% {
+    transform: translate(-5vw, 20vh);
+  }
+  25% {
+    transform: translate(-15vw, 0vh);
+  }
+  50% {
+    transform: translate(-5vw, -20vh);
+  }
+  75% {
+    transform: translate(-2vw, 0vh);
+  }
+  100% {
+    transform: translate(-5vw, 20vh);
+  }
+}
+
+/* Animation to alternate cursor position for Comprehensive Support */
+@keyframes alternateCursorPosition {
+  0% {
+    bottom: -20px;
+    left: 0;
+    transform: rotate(-85deg);
+    top: auto;
+  }
+  50% {
+    top: -20px;
+    left: 0;
+    transform: rotate(0deg);
+    bottom: auto;
+  }
+  100% {
+    bottom: -20px;
+    left: 0;
+    transform: rotate(-45deg);
+    top: auto;
+  }
+}
+
+/* On very small screens, hide the animations to prevent clutter */
+@media (max-width: 640px) {
+  .sustainable-growth-container,
+  .comprehensive-support-container {
+    display: none;
+  }
+}
